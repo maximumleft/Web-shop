@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Теги</h1>
+                    <h1 class="m-0">Продукты</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -19,7 +19,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="card-body table-responsive p-0">
-                    <a href="{{route('tag.create')}}" class="btn btn-outline-primary">Создать</a>
+                    <a href="{{route('product.create')}}" class="btn btn-outline-primary">Создать</a>
                     <table class="table table-hover text-nowrap">
                         <thead>
                         <tr>
@@ -28,10 +28,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($tags as $tag)
+                        @foreach($products as $product)
                             <tr>
-                                <td>{{$tag->id}}</td>
-                                <td><a href="{{route('tag.show',$tag)}}">{{$tag->title}}</a></td>
+                                <td>{{$product->id}}</td>
+                                <td><a href="{{route('product.show',$product)}}">{{$product->title}}</a></td>
                             </tr>
                         @endforeach
 

@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Теги</h1>
+                    <h1 class="m-0">Пользователи</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -19,22 +19,33 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="card-body table-responsive p-0">
-                    <a href="{{route('tag.create')}}" class="btn btn-outline-primary">Создать</a>
+                    <a href="{{route('user.create')}}" class="btn btn-outline-primary">Создать</a>
                     <table class="table table-hover text-nowrap">
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Title</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Patronymic</th>
+                            <th>Age</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Email</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($tags as $tag)
+                        @foreach($users as $user)
                             <tr>
-                                <td>{{$tag->id}}</td>
-                                <td><a href="{{route('tag.show',$tag)}}">{{$tag->title}}</a></td>
+                                <td>{{$user->id}}</td>
+                                <td><a href="{{route('user.show',$user)}}">{{$user->name}}</a></td>
+                                <td>{{$user->surname}}</td>
+                                <td>{{$user->patronymic}}</td>
+                                <td>{{$user->age}}</td>
+                                <td>{{$user->address}}</td>
+                                <td>{{$user->genderTitle}}</td>
+                                <td>{{$user->email}}</td>
                             </tr>
                         @endforeach
-
                         </tbody>
                     </table>
                 </div>
