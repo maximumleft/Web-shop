@@ -30,6 +30,8 @@ class ProductUpdateRequest extends FormRequest
             'count' => 'required|integer',
             'is_published' => 'nullable|string',
             'category_id' => 'required|integer',
+            'tags' => 'nullable|array',
+            'colors' => 'nullable|array',
         ];
     }
 }

@@ -12,6 +12,21 @@ class Product extends Model
     protected $table = 'products';
     protected $guarded = false;
 
+    const PUBLISHED = 1;
+    const NOT_PUBLISHED = 0;
+
+    public static function getPublished()
+    {
+        return [
+            self::PUBLISHED => 'Опубликован',
+            self::NOT_PUBLISHED => 'Не опубликован',
+        ];
+    }
+
+    public function getPublishedTitleAttribute()
+    {
+        return self::getPublished()[$this->is_published];
+    }
     public function tags()
     {
         return $this->belongsToMany(Tag::class,'product_tags');

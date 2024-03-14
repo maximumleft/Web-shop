@@ -25,6 +25,11 @@
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Count</th>
+                            <th>Is Published</th>
+                            <th>Category</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,6 +37,12 @@
                             <tr>
                                 <td>{{$product->id}}</td>
                                 <td><a href="{{route('product.show',$product)}}">{{$product->title}}</a></td>
+                                <td><img src="{{url("storage/" . $product->preview_image)}}" width="100" height="100" alt="preview_image"></td>
+                                <td>{{$product->price}}</td>
+                                <td>{{$product->count}}</td>
+                                <td>{{$product->publishedTitle}}</td>
+                                <td>{{$product->category_id}}</td>
+
                             </tr>
                         @endforeach
 
