@@ -21,47 +21,55 @@
                 <form action="{{route('product.store')}}" method="POST" class="w-25" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <input type="text" value="{{old('title')}}" class="form-control" name="title" placeholder="Название">
+                        <input type="text" value="{{old('title')}}" class="form-control" name="title"
+                               placeholder="Название">
                     </div>
                     <div class="form-group">
-                        <input type="text" value="{{old('description')}}" class="form-control" name="description" placeholder="Описание">
+                        <input type="text" value="{{old('description')}}" class="form-control" name="description"
+                               placeholder="Описание">
                     </div>
                     <div class="form-group">
-                        <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Контент"></textarea>
+                        <textarea name="content" class="form-control" cols="30" rows="10"
+                                  placeholder="Контент"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="text" value="{{old('price')}}" class="form-control" name="price" placeholder="Цена">
+                        <input type="text" value="{{old('price')}}" class="form-control" name="price"
+                               placeholder="Цена">
                     </div>
                     <div class="form-group">
-                        <input type="text" value="{{old('count')}}" class="form-control" name="count" placeholder="Кол-во">
+                        <input type="text" value="{{old('count')}}" class="form-control" name="count"
+                               placeholder="Кол-во">
                     </div>
 
                     <div class="form-group">
-                        <select  name="category_id" class="form-control select2" data-placeholder="Выберите категорию" style="width: 100%;">
-                            <option value="1">Alaska</option>
-                            <option value="2">California</option>
-                            <option value="3">Delaware</option>
+                        <select name="category_id" class="form-control select2" data-placeholder="Выберите категорию"
+                                style="width: 100%;">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="form-group">
                         <div class="select2-purple">
-                            <select name="colors[]" class="select2" multiple="multiple" data-placeholder="Выберите цвет" data-dropdown-css-class="select2-purple" style="width: 100%;">
-                                <option value="1">Alabama</option>
-                                <option value="2">Alaska</option>
+                            <select name="colors[]" class="select2" multiple="multiple" data-placeholder="Выберите цвет"
+                                    data-dropdown-css-class="select2-purple" style="width: 100%;">
+                                @foreach($colors as $color)
+                                    <option value="{{$color->id}}">{{$color->title}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group" data-select2-id="42">
                         <div class="select2-purple" data-select2-id="41">
-                            <select name="tags[]" class="select2 select2-hidden-accessible" multiple="" data-placeholder="Выберите тег"
+                            <select name="tags[]" class="select2 select2-hidden-accessible" multiple=""
+                                    data-placeholder="Выберите тег"
                                     data-dropdown-css-class="select2-purple" style="width: 100%;" data-select2-id="15"
                                     tabindex="-1" aria-hidden="true">
-{{--                                @foreach($tags as $tag)--}}
-                                    <option value="1">aaa</option>
-                                    <option value="2">aaa</option>
-{{--                                @endforeach--}}
+                                @foreach($tags as $tag)
+                                    <option value="{{$tag->id}}">{{$tag->title}}</option>
+                                @endforeach
                             </select><span class="dropdown-wrapper" aria-hidden="true"></span>
                         </div>
                     </div>
