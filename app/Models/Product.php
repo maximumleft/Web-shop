@@ -35,4 +35,11 @@ class Product extends Model
     {
         return $this->belongsToMany(Color::class,'color_products');
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function getImageUrlAttribute(){
+        return url('storage/' . $this->preview_image);
+    }
 }
