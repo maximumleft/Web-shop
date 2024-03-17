@@ -37,6 +37,10 @@
                                placeholder="Цена">
                     </div>
                     <div class="form-group">
+                        <input type="text" value="{{old('old_price')}}" class="form-control" name="old_price"
+                               placeholder="Старая цена">
+                    </div>
+                    <div class="form-group">
                         <input type="text" value="{{old('count')}}" class="form-control" name="count"
                                placeholder="Кол-во">
                     </div>
@@ -78,6 +82,17 @@
                             <div class="custom-file">
                                 <input name="preview_image" type="file" class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input name="second_image" type="file" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите второй файл</label>
                             </div>
                             <div class="input-group-append">
                                 <span class="input-group-text">Upload</span>

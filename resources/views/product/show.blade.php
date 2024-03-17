@@ -43,8 +43,16 @@
                             <td><img src="{{url("storage/" . $product->preview_image)}}" width="100" height="100" alt="preview_image"></td>
                         </tr>
                         <tr>
+                            <td>Изображение 2</td>
+                            <td><img src="{{url("storage/" . $product->second_image)}}" width="100" height="100" alt="preview_image"></td>
+                        </tr>
+                        <tr>
                             <td>Цена</td>
                             <td>{{$product->price}}</td>
+                        </tr>
+                        <tr>
+                            <td>Старая цена</td>
+                            <td>{{$product->old_price}}</td>
                         </tr>
                         <tr>
                             <td>Кол-во</td>

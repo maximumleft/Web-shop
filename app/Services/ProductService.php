@@ -29,6 +29,9 @@ class ProductService
             if (!empty($data['preview_image'])) {
                 $data['preview_image'] = Storage::disk('public')->put('/public/images', $data['preview_image']);
             }
+            if (!empty($data['second_image'])) {
+                $data['second_image'] = Storage::disk('public')->put('/public/images', $data['second_image']);
+            }
 
             $product = Product::firstOrCreate($data);
             if (isset($tagIds)) {
@@ -59,6 +62,9 @@ class ProductService
 
             if (!empty($data['preview_image'])) {
                 $data['preview_image'] = Storage::disk('public')->put('/public/images', $data['preview_image']);
+            }
+            if (!empty($data['second_image'])) {
+                $data['second_image'] = Storage::disk('public')->put('/public/images', $data['second_image']);
             }
 
             $product->update($data);

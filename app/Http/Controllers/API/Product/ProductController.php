@@ -18,14 +18,14 @@ class ProductController extends Controller
         return response()->json([
             'status' => 'ok',
             'products' => ProductResource::collection(Product::all()),
-            ]);
+        ]);
     }
 
     public function show(Product $product)
     {
         $tags = $this->service->showTags($product);
         $colors = $this->service->showColors($product);
-        return view('product.show', compact('product', 'tags','colors'));
+        return view('product.show', compact('product', 'tags', 'colors'));
     }
 
     public function create()
@@ -48,17 +48,17 @@ class ProductController extends Controller
         $colors = Color::all();
         $tags = Tag::all();
         $categories = Category::all();
-        return view('product.edit', compact('product','colors', 'tags', 'categories'));
+        return view('product.edit', compact('product', 'colors', 'tags', 'categories'));
     }
 
     public function update(Product $product, ProductUpdateRequest $request)
     {
         $data = $request->validated();
-        $this->service->update($data,$product);
+        $this->service->update($data, $product);
         $tags = $this->service->showTags($product);
         $colors = $this->service->showColors($product);
 
-        return view('product.show', compact('product','colors', 'tags'));
+        return view('product.show', compact('product', 'colors', 'tags'));
     }
 
     public function delete(Product $product)
@@ -66,5 +66,26 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('product.index');
+    }
+
+    public function filterList()
+    {
+        $colors = Color::all();
+        $tags = Tag::all();
+        $categories = Category::all();
+        $maxPrice = Product::orderBy('price','DESC')->first()->price;
+        $minPrice = Product::orderBy('price','ASC')->first()->price;
+
+        $result = [
+            'colors' => $colors,
+            'tags' => $tags,
+            'categories' => $categories,
+            'price' => [
+                'min_price' => $minPrice,
+                'max_price' => $maxPrice,
+            ],
+        ];
+
+        return response()->json($result);
     }
 }

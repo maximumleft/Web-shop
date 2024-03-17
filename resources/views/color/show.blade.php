@@ -28,7 +28,8 @@
                         </tr>
                         <tr>
                             <td>Название</td>
-                            <td>{{$color->title}}</td>
+                            <td><span style="background-color: #{{$color->title}};">{{$color->title}}</span></td>
+
                         </tr>
                     </table>
                     <div class="d-flex p-3">
