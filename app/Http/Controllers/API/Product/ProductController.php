@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API\Product;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\ProductFilter;
+use App\Http\Requests\API\IndexRequest;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Resources\ProductResource;
@@ -13,11 +15,14 @@ use App\Models\Tag;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(IndexRequest $request)
     {
+        $data = $request->validated();
+        $filter = app()->make(ProductFilter::class,['queryParams'=> array_filter($data)]);
+
         return response()->json([
             'status' => 'ok',
-            'products' => ProductResource::collection(Product::all()),
+            'products' => ProductResource::collection(Product::filter($filter)->get()),
         ]);
     }
 
