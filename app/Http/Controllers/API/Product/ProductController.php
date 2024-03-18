@@ -19,11 +19,8 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         $filter = app()->make(ProductFilter::class,['queryParams'=> array_filter($data)]);
-
-        return response()->json([
-            'status' => 'ok',
-            'products' => ProductResource::collection(Product::filter($filter)->get()),
-        ]);
+        $products = Product::filter($filter)->paginate(12,['*'],'page',$data['page']);
+        return ProductResource::collection($products);
     }
 
     public function show(Product $product)
