@@ -25,9 +25,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $tags = $this->service->showTags($product);
-        $colors = $this->service->showColors($product);
-        return view('product.show', compact('product', 'tags', 'colors'));
+        return ProductResource::make($product);
     }
 
     public function create()
